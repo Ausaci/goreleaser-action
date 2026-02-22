@@ -54,15 +54,15 @@ jobs:
     steps:
       -
         name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
       -
         name: Set up Go
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@v6
       -
         name: Run GoReleaser
-        uses: goreleaser/goreleaser-action@v6
+        uses: goreleaser/goreleaser-action@v7
         with:
           # either 'goreleaser' (default) or 'goreleaser-pro'
           distribution: goreleaser
@@ -93,7 +93,7 @@ Or with a condition on GoReleaser step:
 ```yaml
       -
         name: Run GoReleaser
-        uses: goreleaser/goreleaser-action@v6
+        uses: goreleaser/goreleaser-action@v7
         if: startsWith(github.ref, 'refs/tags/')
         with:
           version: '~> v2'
@@ -119,7 +119,7 @@ the [Import GPG](https://github.com/crazy-max/ghaction-import-gpg) GitHub Action
           passphrase: ${{ secrets.PASSPHRASE }}
       -
         name: Run GoReleaser
-        uses: goreleaser/goreleaser-action@v6
+        uses: goreleaser/goreleaser-action@v7
         with:
           version: '~> v2'
           args: release --clean
@@ -144,7 +144,7 @@ purposes. You can do that with the [actions/upload-artifact](https://github.com/
 ```yaml
       -
         name: Run GoReleaser
-        uses: goreleaser/goreleaser-action@v6
+        uses: goreleaser/goreleaser-action@v7
         with:
           version: '~> v2'
           args: release --clean
@@ -153,7 +153,7 @@ purposes. You can do that with the [actions/upload-artifact](https://github.com/
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       -
         name: Upload assets
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: myapp
           path: myfolder/dist/*
@@ -165,7 +165,7 @@ purposes. You can do that with the [actions/upload-artifact](https://github.com/
 steps:
   -
     name: Install GoReleaser
-    uses: goreleaser/goreleaser-action@v6
+    uses: goreleaser/goreleaser-action@v7
     with:
       install-only: true
   -
@@ -219,7 +219,7 @@ secret named `GH_PAT`, the step will look like this:
 ```yaml
       -
         name: Run GoReleaser
-        uses: goreleaser/goreleaser-action@v6
+        uses: goreleaser/goreleaser-action@v7
         with:
           version: '~> v2'
           args: release --clean
